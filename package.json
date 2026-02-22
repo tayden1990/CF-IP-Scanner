@@ -13,7 +13,18 @@
   "author": "Antigravity",
   "license": "ISC",
   "description": "Cloudflare IP Scanner Desktop App",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tayden1990/CF-IP-Scanner.git"
+  },
   "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "tayden1990",
+        "repo": "CF-IP-Scanner"
+      }
+    ],
     "appId": "com.antigravity.scanner",
     "productName": "Antigravity Scanner",
     "directories": {
@@ -43,5 +54,8 @@
     "electron": "^40.6.0",
     "electron-builder": "^26.8.1",
     "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.3"
   }
 }
