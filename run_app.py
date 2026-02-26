@@ -3,6 +3,18 @@ import subprocess
 import time
 import os
 import sys
+import importlib.util
+
+def check_dependencies():
+    missing = []
+    for module in ["uvicorn", "fastapi"]:
+        if importlib.util.find_spec(module) is None:
+            missing.append(module)
+    if missing:
+        print(f"Error: Missing required Python packages: {', '.join(missing)}")
+        print("Please install them with:")
+        print(f"  pip install -r backend/requirements.txt")
+        sys.exit(1)
 
 def start_backend():
     print("Starting Backend...")
@@ -16,6 +28,7 @@ def start_frontend():
 
 if __name__ == "__main__":
     try:
+        check_dependencies()
         backend_proc = start_backend()
         frontend_proc = start_frontend()
         
